@@ -7,7 +7,6 @@ async function getData() {
     // Mendapatkan semua data dari tabel surat_masuk
     const suratMasuk = await prisma.suratMasuk.findMany();
     // Menampilkan data
-    console.log(suratMasuk);
     return suratMasuk;
   } catch (error) {
     console.error('Error getting data:', error);

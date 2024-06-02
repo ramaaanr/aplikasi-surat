@@ -19,6 +19,7 @@ import {
 import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -29,6 +30,7 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const router = useRouter();
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const table = useReactTable({
     data,
@@ -54,7 +56,9 @@ export function DataTable<TData, TValue>({
           }
           className="ml-4 max-w-sm"
         />
-        <Button>Tambah Data</Button>
+        <Button onClick={() => router.push('/surat-masuk/tambah')}>
+          Tambah Data
+        </Button>
         <Button variant={'ghost'}>Cetak Data</Button>
       </div>
       <Table>

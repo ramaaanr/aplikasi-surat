@@ -35,7 +35,7 @@ export const columns: ColumnDef<any>[] = [
       return (
         <>
           <Link href={`/surat-masuk/ubah/${row.original.id}`}>Ubah</Link>
-          <Button variant={'destructive'}>Hapus</Button>
+          <Link href={`/surat-masuk/delete/${row.original.id}`}>Hapus</Link>
         </>
       );
     },

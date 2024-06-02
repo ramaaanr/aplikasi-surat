@@ -1,7 +1,23 @@
 import { PrismaClient } from '@prisma/client';
+import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
-export async function GET(request: Request) {}
+
+export async function GET(request: Request) {
+  try {
+    const suratMasuk = await prisma.suratMasuk.findMany();
+    if (suratMasuk) {
+      return new NextResponse(JSON.stringify(suratMasuk), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+  } catch (error: any) {
+    return Response.json({
+      status: false,
+      message: error.message,
+    });
+  }
+}
 export async function POST(request: Request) {
   try {
     const req = await request.json();
