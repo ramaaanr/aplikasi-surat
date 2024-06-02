@@ -1,5 +1,22 @@
-export default function Sidebar() {
+// components/Sidebar.tsx
+'use client';
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+const Sidebar = () => {
+  const router = useRouter();
+
   return (
-    <div className="sidebar fixed z-10 h-screen w-56 bg-blue-300">Sidebar</div>
+    <div className="w-56 fixed z-10 h-full bg-gray-800 text-white flex flex-col">
+      <div className="flex flex-col p-4">
+        <h2 className="text-xl font-semibold mb-6">Menu</h2>
+        <Link href="/dashboard">Dashboard</Link>
+        <Link href="/surat-masuk">Surat Masuk</Link>
+        <Link href="/surat-keluar">Surat Keluar</Link>
+      </div>
+    </div>
   );
-}
+};
+
+export default Sidebar;

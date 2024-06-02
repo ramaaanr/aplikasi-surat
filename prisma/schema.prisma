@@ -22,3 +22,18 @@ model suratMasuk {
   namaTembusan       String
   tanggalInput       DateTime @default(now())
 }
+model suratKeluar {
+  id                 Int      @id @default(autoincrement())
+  nomorSurat         String
+  pengirimSurat      String
+  waktuSurat         DateTime
+  lampiranSurat      String
+  perihalSurat       String
+  penerimaSurat      String
+  isiSurat           String
+  unitPenerbit       String
+  tempatSurat        String
+  namaMengesahkan    String
+  namaTembusan       String
+  tanggalInput       DateTime @default(now())
+}

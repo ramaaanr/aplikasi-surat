@@ -23,7 +23,9 @@ export default function RootLayout({
           <Sidebar />
           <div className="ml-56 main-container w-full">
             <Header />
-            <div className="main-contai">{children}</div>
+            <div className="main-container mt-8 min-h-screen bg-gray-100">
+              {children}
+            </div>
           </div>
         </main>
       </body>

@@ -5,10 +5,10 @@ const prisma = new PrismaClient();
 async function getData() {
   try {
     // Mendapatkan semua data dari tabel surat_masuk
-    const suratMasuk = await prisma.suratMasuk.findMany();
+    const suratKeluar = await prisma.suratKeluar.findMany();
 
     // Menampilkan data
-    return suratMasuk;
+    return suratKeluar;
   } catch (error) {
     console.error('Error getting data:', error);
     return [];
