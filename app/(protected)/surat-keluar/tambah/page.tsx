@@ -13,7 +13,7 @@ const Page = () => {
         waktuSurat: new Date(data.waktuSurat).toISOString(),
       };
       console.log(data);
-      const response = await fetch('/api/surat-masuk', {
+      const response = await fetch('/api/surat-keluar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const Page = () => {
 
       if (response.ok) {
         alert('tambah data sukses');
-        router.push('/surat-masuk');
+        router.push('/surat-keluar');
       } else {
         alert('tambah data gagal');
       }
@@ -34,7 +34,7 @@ const Page = () => {
 
   return (
     <div className="container mx-auto py-10">
-      <h1>Surat Masuk</h1>
+      <h1>Surat Keluar</h1>
       <SuratMasukForm onSubmit={addSuratMasuk} />
     </div>
   );

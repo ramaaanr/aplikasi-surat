@@ -11,6 +11,12 @@ export async function PUT(
     const req = await request.json();
     const { id, ...data } = req;
 
+    const suratMasuk = await prisma.suratMasuk.findMany({
+      where: {
+        nomorSurat: data.nomorSurat, // Ensure `id` is a number
+      },
+    });
+
     const updatedSuratMasuk = await prisma.suratMasuk.update({
       where: { id: Number(params.id) },
       data,

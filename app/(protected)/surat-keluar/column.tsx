@@ -10,20 +10,12 @@ export const columns: ColumnDef<any>[] = [
     header: 'No Surat',
   },
   {
-    accessorKey: 'pengirimSurat',
-    header: 'Pengirim',
+    accessorKey: 'penerimaSurat',
+    header: 'Penerima',
   },
   {
     accessorKey: 'tanggalInput',
     header: 'Waktu',
-  },
-  {
-    accessorKey: 'tempatSurat',
-    header: 'Tempat',
-  },
-  {
-    accessorKey: 'lampiranSurat',
-    header: 'Lampiran',
   },
   {
     accessorKey: 'perihalSurat',
@@ -34,8 +26,8 @@ export const columns: ColumnDef<any>[] = [
     cell: ({ row }) => {
       return (
         <>
-          <Link href={`/surat-masuk/ubah/${row.original.id}`}>Ubah</Link>
-          <Link href={`/surat-masuk/delete/${row.original.id}`}>Hapus</Link>
+          <Link href={`/surat-keluar/ubah/${row.original.id}`}>Ubah</Link>
+          <Link href={`/surat-keluar/delete/${row.original.id}`}>Hapus</Link>
         </>
       );
     },

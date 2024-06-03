@@ -24,7 +24,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/surat-masuk/${params.id}`);
+        const res = await fetch(`/api/surat-keluar/${params.id}`);
 
         if (!res.ok) {
           throw new Error('Failed to fetch data');
@@ -69,19 +69,6 @@ const Page = ({ params }: { params: { id: string } }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     addSuratMasuk(formData);
-    setFormData({
-      nomorSurat: '',
-      pengirimSurat: '',
-      waktuSurat: '',
-      lampiranSurat: '',
-      perihalSurat: '',
-      penerimaSurat: '',
-      isiSurat: '',
-      unitPenerbit: 'Instansi',
-      tempatSurat: '',
-      namaMengesahkan: 'Direktur',
-      namaTembusan: '',
-    });
   };
   const addSuratMasuk = async (data: any) => {
     try {
@@ -90,7 +77,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         waktuSurat: new Date(data.waktuSurat).toISOString(),
       };
       console.log(data);
-      const response = await fetch(`/api/surat-masuk/${params.id}`, {
+      const response = await fetch(`/api/surat-keluar/${params.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +87,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 
       if (response.ok) {
         alert('tambah data sukses');
-        router.push('/surat-masuk');
+        router.push('/surat-keluar');
       } else {
         alert('tambah data gagal');
       }

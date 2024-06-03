@@ -6,11 +6,14 @@ const prisma = new PrismaClient();
 export async function GET(request: Request) {
   try {
     const suratMasuk = await prisma.suratMasuk.findMany();
-    if (suratMasuk) {
-      return new NextResponse(JSON.stringify(suratMasuk), {
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+
+    return new Response(
+      JSON.stringify({
+        status: true,
+        data: suratMasuk,
+      }),
+      { status: 200 },
+    );
   } catch (error: any) {
     return Response.json({
       status: false,
@@ -34,7 +37,23 @@ export async function POST(request: Request) {
       namaMengesahkan,
       namaTembusan,
     } = req;
-    const newSuratMasuk = await prisma.suratMasuk.create({
+
+    const suratMasuk = await prisma.suratMasuk.findMany({
+      where: {
+        nomorSurat: nomorSurat, // Ensure `id` is a number
+      },
+    });
+    if (suratMasuk.length > 0) {
+      return new Response(
+        JSON.stringify({
+          status: false,
+          message: 'Nomor Surat Sudah ada',
+          data: suratMasuk,
+        }),
+        { status: 400 },
+      );
+    }
+    const newsuratMasuk = await prisma.suratMasuk.create({
       data: {
         nomorSurat,
         pengirimSurat,
@@ -49,9 +68,10 @@ export async function POST(request: Request) {
         namaTembusan,
       },
     });
+
     return Response.json({
       status: true,
-      data: newSuratMasuk,
+      data: newsuratMasuk,
     });
   } catch (error: any) {
     return Response.json({ error: error.message });

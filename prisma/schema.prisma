@@ -9,7 +9,7 @@ datasource db {
 
 model suratMasuk {
   id                 Int      @id @default(autoincrement())
-  nomorSurat         String
+  nomorSurat         String   
   pengirimSurat      String
   waktuSurat         DateTime
   lampiranSurat      String
@@ -22,9 +22,10 @@ model suratMasuk {
   namaTembusan       String
   tanggalInput       DateTime @default(now())
 }
+
 model suratKeluar {
   id                 Int      @id @default(autoincrement())
-  nomorSurat         String
+  nomorSurat         String   
   pengirimSurat      String
   waktuSurat         DateTime
   lampiranSurat      String

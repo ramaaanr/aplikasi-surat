@@ -21,11 +21,13 @@ const Page = () => {
         body: JSON.stringify(formattedData),
       });
 
+      const res = await response.json();
+
       if (response.ok) {
         alert('tambah data sukses');
         router.push('/surat-masuk');
       } else {
-        alert('tambah data gagal');
+        alert(`tambah data gagal ${res.message}`);
       }
     } catch (error) {
       console.error('Error adding surat masuk:', error);

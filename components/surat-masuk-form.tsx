@@ -35,19 +35,6 @@ const SuratMasukForm: React.FC<SuratMasukFormProps> = ({ onSubmit }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({
-      nomorSurat: '',
-      pengirimSurat: '',
-      waktuSurat: '',
-      lampiranSurat: '',
-      perihalSurat: '',
-      penerimaSurat: '',
-      isiSurat: '',
-      unitPenerbit: 'Institusi',
-      tempatSurat: '',
-      namaMengesahkan: 'Direktur',
-      namaTembusan: '',
-    });
   };
 
   return (

@@ -6,11 +6,14 @@ const prisma = new PrismaClient();
 export async function GET(request: Request) {
   try {
     const suratKeluar = await prisma.suratKeluar.findMany();
-    if (suratKeluar) {
-      return new NextResponse(JSON.stringify(suratKeluar), {
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+
+    return new Response(
+      JSON.stringify({
+        status: true,
+        data: suratKeluar,
+      }),
+      { status: 200 },
+    );
   } catch (error: any) {
     return Response.json({
       status: false,

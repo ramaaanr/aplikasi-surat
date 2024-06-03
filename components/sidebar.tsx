@@ -14,6 +14,15 @@ const Sidebar = () => {
         <Link href="/dashboard">Dashboard</Link>
         <Link href="/surat-masuk">Surat Masuk</Link>
         <Link href="/surat-keluar">Surat Keluar</Link>
+        <p
+          className="cursor-pointer"
+          onClick={() => {
+            localStorage.removeItem('auth');
+            router.push('/login');
+          }}
+        >
+          Log Out
+        </p>
       </div>
     </div>
   );
